@@ -17,8 +17,11 @@ dotenv.config();
 // Initialize database
 initializeDatabase();
 
-// Seed sample applications (force=true to clear and reseed)
-seedApplications(true);
+// Seed sample applications only if explicitly enabled (e.g. local dev)
+if (process.env.SEED_DB === 'true') {
+  // force=true clears existing and reseeds
+  seedApplications(true);
+}
 
 const app = express();
 const PORT = process.env.PORT || 3001;
