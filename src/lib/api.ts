@@ -1,5 +1,7 @@
 // API Service for UDMT Application
-const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001/api';
+// Prefer VITE_API_BASE_URL (without trailing /api) then fallback
+const rawBase = (import.meta as any).env?.VITE_API_BASE_URL || (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001';
+const API_BASE_URL = rawBase.endsWith('/api') ? rawBase : `${rawBase.replace(/\/$/, '')}/api`;
 
 // Get token from localStorage
 const getToken = () => localStorage.getItem('udmt_token');
