@@ -1,0 +1,14 @@
+[variables]
+NIXPACKS_NODE_VERSION = '20'
+NIXPACKS_SPA_CADDY = 'false'
+
+[phases.setup]
+# Extend default packages (node, npm) and add python3 for node-gyp builds (better-sqlite3)
+nixPkgs = ['...', 'python3']
+
+[phases.build]
+# Only build the server (skip full frontend vite build to speed up deploy)
+cmds = ['npm run server:build']
+
+[start]
+cmd = 'npm run server:start'
