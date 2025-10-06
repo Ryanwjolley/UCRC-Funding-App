@@ -3,13 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { FileText, Users, Shield } from 'lucide-react'
 import { adminAPI } from '../lib/api'
 
-interface AdminDashboardProps {
-  currentUser: { name: string; role: 'user' | 'admin' }
-  actingAs: string
-  setActingAs: (email: string) => void
-  prototypeImpersonation: boolean
-}
-
 interface Application {
   id: number
   user_id: number
@@ -24,12 +17,7 @@ interface Application {
   }
 }
 
-export default function AdminDashboard({ 
-  // currentUser, 
-  actingAs: _actingAs, 
-  setActingAs: _setActingAs, 
-  prototypeImpersonation: _prototypeImpersonation 
-}: AdminDashboardProps) {
+export default function AdminDashboard() {
   const navigate = useNavigate()
   const [applications, setApplications] = useState<Application[]>([])
   const [loading, setLoading] = useState(true)

@@ -23,9 +23,6 @@ function App() {
   const isAdmin = () => getCurrentUserData()?.role === 'admin'
   const isImpersonating = () => currentUser !== actingAs
 
-  // Debug logging
-  console.log('App state:', { isAuthenticated, currentUser, actingAs, userData: getCurrentUserData() })
-
   return (
     <Router>
       <Routes>
@@ -68,12 +65,7 @@ function App() {
         <Route 
           path="/admin" 
           element={isAuthenticated && isAdmin() ? (
-            <AdminDashboard 
-              currentUser={getCurrentUserData()}
-              actingAs={actingAs}
-              setActingAs={setActingAs}
-              prototypeImpersonation={PROTOTYPE_IMPERSONATION}
-            />
+            <AdminDashboard />
           ) : (
             <Navigate to="/dashboard" />
           )} 

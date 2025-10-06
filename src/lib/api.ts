@@ -85,14 +85,10 @@ export const applicationsAPI = {
   },
 
   update: async (id: string, formData: any, status?: string) => {
-    console.log('📡 API: Updating application', id)
-    console.log('📤 API: Sending data:', { form_data: formData, status })
-    const result = await apiRequest(`/applications/${id}`, {
+    return apiRequest(`/applications/${id}`, {
       method: 'PUT',
       body: JSON.stringify({ form_data: formData, status }),
     });
-    console.log('✅ API: Update response:', result)
-    return result;
   },
 
   submit: async (id: string) => {
