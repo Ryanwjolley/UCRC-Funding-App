@@ -15,7 +15,8 @@
     "server:build": "tsc -p server/tsconfig.json",
     "server:start": "node server/dist/index.js",
     "start:all": "concurrently --kill-others --raw \"npm run dev\" \"npm run server\"",
-    "start:windows": "powershell -ExecutionPolicy Bypass -File ./start-dev.ps1"
+    "start:windows": "powershell -ExecutionPolicy Bypass -File ./start-dev.ps1",
+    "deploy:frontend": "powershell -ExecutionPolicy Bypass -File ./deploy-frontend.ps1"
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
